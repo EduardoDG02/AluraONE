@@ -1,4 +1,4 @@
-package oracleOne;
+package firstProject;
 
 import java.util.Scanner;
 
