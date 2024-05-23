@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class challlengeBank {
 
 	public static void main(String[] args) {
-		
 		Scanner sc = new Scanner (System.in);
 		
 		String Cliente = "Antonio Aguilar";
@@ -14,7 +13,8 @@ public class challlengeBank {
 		int amount = 0;
 		int Select = 0;
 		int conf = 0;
-		boolean salir = false;
+		int exit = 0;
+		int deposit = 0;
 		String inicio = """
 				===================================
 					Welcome to CitiBank 
@@ -28,45 +28,45 @@ public class challlengeBank {
 				""";
 		String Salida = """
 				¿Deseas realizar algo más?
-				5 - Si
-				6 - No
+				8 - Si
+				9 - No
 				""";
 		System.out.println(inicio);
 		System.out.println("Hola " + Cliente + " elige una opción");
 		System.out.println(Nav);
 		
-		Select = sc.nextInt();
 		
-		while (!salir) {
+		while (Select !=9) {
 			
-			if (Select == 1) {
+			Select = sc.nextInt();
+			
+			switch (Select) {
+			case 1: 
 				System.out.println(Saldo);
-				
-				System.out.println(Salida);
-				conf = sc.nextInt();
-				
-				if(conf == 5) {
-					System.out.println(Nav);
-				}else if (conf == 6){
-					System.out.println("Gracias por visitarnos, vuelva pronto");
-					break;
-				}//nested if option 1
-			}//option 1
-			else if (Select == 2) {
+				break;
+			case 2: 
 				System.out.println("¿Cuanto deseas retirar?");
 				amount = sc.nextInt();
-				System.out.println("Su saldo actual es de " + (Saldo - amount));
-				System.out.println(Salida);
-				conf = sc.nextInt();
-				
-				if(conf == 1) {
-					System.out.println(Nav);
-				}else if (conf == 2){
-					System.out.println("Gracias por visitarnos, vuelva pronto");
-					break;
-				}//nested if option 2
-			}//option 2 
-		}//End while
+				if (amount<Saldo) {
+					Saldo = Saldo - amount;
+					System.out.println("Su saldo actual es de " + Saldo);
+				}else {
+					System.out.println("Saldo insuficiente");
+				} // if 
+				break;
+			case 3: 
+				System.out.println("Cantidad a depositar");
+				deposit = sc.nextInt();
+				Saldo = Saldo + deposit;
+				System.out.println("Su saldo actual es de " + Saldo );
+			case 9:
+				System.out.println("Gracias por visitarnos, vuelva pronto");
+			
+			}// switch		
+	
+	}
+
+		
 	}
 
 }
